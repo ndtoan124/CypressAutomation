@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-02-04T14:18:41.021Z",
+    "end": "2021-02-04T14:18:56.050Z",
+    "duration": 15029,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5c3210f7-92a6-4ec8-a9a9-b6ee3b34d407",
+      "title": "",
+      "fullFile": "cypress/integration/examples/Framework.js",
+      "file": "cypress/integration/examples/Framework.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5973296f-3437-4710-9787-d3dfcc7c8786",
+          "title": "Fixture",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Hook",
+              "fullTitle": "Fixture Hook",
+              "timedOut": null,
+              "duration": 11750,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var hP = new _HomePage[\"default\"]();\nvar co = new _CheckoutPage[\"default\"]();\ncy.visit(Cypress.env('url'));\nhP.getNameTextbox().type(this.data.name);\nhP.getGender().select(this.data.gender);\nhP.getBindingData().should('have.value', this.data.name); //cy.get('input[name=name]:nth-child(2)').should('have.attr', 'minlength', '2')\nhP.getEmailTextbox().type(this.data.email);\nhP.getPasswordTextbox().type('bob123'); //cy.get('#exampleCheck1').check()\nhP.getEntrRadiobutton().should('be.disabled');\nhP.getShopMenuTab().click();\nthis.data.productName.forEach(function (element) {\n  cy.selectProduct(element);\n}); //cypress support debug by cy.pause() or cy.debug()\n//Checkout\nhP.getCheckoutButton().click();\nvar sum = 0;\ncy.get('tr td:nth-child(4) strong').each(function ($e1, index, $list) {\n  var res = $e1.text().split(' ');\n  res = res[1].trim();\n  sum = Number(sum) + Number(res);\n}).then(function () {\n  cy.log(sum);\n});\ncy.get('h3 strong').then(function (element) {\n  var amount = element.text().split(' ');\n  var total = amount[1].trim();\n  expect(sum).to.equal(Number(total));\n});\nco.getCheckoutButton().click();\nco.getCountryTextbox().type('France'); //Cypress.config just apply only specific .js not entirely framework\n//Cypress.config('detaultCommandTimeout', 10000)\nco.getCountrySuggestion().click();\nco.getAgreeCheckbox().click({\n  force: true\n});\nco.getPurchaseButton().click();\ncy.get('.alert').then(function (element) {\n  expect(element.text().includes('Success')).to.be[\"true\"];\n});",
+              "err": {},
+              "uuid": "2c22c5aa-b002-4974-a76c-207d68609b12",
+              "parentUUID": "5973296f-3437-4710-9787-d3dfcc7c8786",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2c22c5aa-b002-4974-a76c-207d68609b12"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 11750,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.1.0"
+    }
+  }
+}

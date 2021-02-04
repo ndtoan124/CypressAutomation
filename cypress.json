@@ -1,0 +1,12 @@
+{
+  "defaultCommandTimeout": 10000,
+  "env": {
+    "url": "https://www.rahulshettyacademy.com/angularpractice/"
+  },
+  "projectId": "99bhzk",
+  "reporter": "mochawesome",
+  "retries":{
+    "runMode": 1
+  }
+  
+}
