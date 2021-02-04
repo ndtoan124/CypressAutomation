@@ -6,7 +6,7 @@
   "projectId": "99bhzk",
   "reporter": "mochawesome",
   "retries":{
-    "runMode": 2
+    "runMode": 1
   }
   
 }
