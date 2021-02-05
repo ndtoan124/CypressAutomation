@@ -1,15 +1,15 @@
 {
   "stats": {
     "suites": 1,
-    "tests": 1,
+    "tests": 2,
     "passes": 1,
     "pending": 0,
-    "failures": 0,
-    "start": "2021-02-04T14:18:41.021Z",
-    "end": "2021-02-04T14:18:56.050Z",
-    "duration": 15029,
-    "testsRegistered": 1,
-    "passPercent": 100,
+    "failures": 1,
+    "start": "2021-02-05T18:18:19.477Z",
+    "end": "2021-02-05T18:18:36.360Z",
+    "duration": 16883,
+    "testsRegistered": 2,
+    "passPercent": 50,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,49 +18,73 @@
   },
   "results": [
     {
-      "uuid": "5c3210f7-92a6-4ec8-a9a9-b6ee3b34d407",
+      "uuid": "67ce255c-5656-417f-82db-caef6de9e91a",
       "title": "",
-      "fullFile": "cypress/integration/examples/Framework.js",
-      "file": "cypress/integration/examples/Framework.js",
+      "fullFile": "cypress/integration/BDD/Ecome.feature",
+      "file": "cypress/integration/BDD/Ecome.feature",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "5973296f-3437-4710-9787-d3dfcc7c8786",
-          "title": "Fixture",
+          "uuid": "16d853cc-ebab-4865-9670-6013acda125e",
+          "title": "E2E Ecommerce validation",
           "fullFile": "",
           "file": "",
           "beforeHooks": [],
           "afterHooks": [],
           "tests": [
             {
-              "title": "Hook",
-              "fullTitle": "Fixture Hook",
+              "title": "Ecommerce products delivery",
+              "fullTitle": "E2E Ecommerce validation Ecommerce products delivery",
               "timedOut": null,
-              "duration": 11750,
+              "duration": 10095,
               "state": "passed",
               "speed": "slow",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "var hP = new _HomePage[\"default\"]();\nvar co = new _CheckoutPage[\"default\"]();\ncy.visit(Cypress.env('url'));\nhP.getNameTextbox().type(this.data.name);\nhP.getGender().select(this.data.gender);\nhP.getBindingData().should('have.value', this.data.name); //cy.get('input[name=name]:nth-child(2)').should('have.attr', 'minlength', '2')\nhP.getEmailTextbox().type(this.data.email);\nhP.getPasswordTextbox().type('bob123'); //cy.get('#exampleCheck1').check()\nhP.getEntrRadiobutton().should('be.disabled');\nhP.getShopMenuTab().click();\nthis.data.productName.forEach(function (element) {\n  cy.selectProduct(element);\n}); //cypress support debug by cy.pause() or cy.debug()\n//Checkout\nhP.getCheckoutButton().click();\nvar sum = 0;\ncy.get('tr td:nth-child(4) strong').each(function ($e1, index, $list) {\n  var res = $e1.text().split(' ');\n  res = res[1].trim();\n  sum = Number(sum) + Number(res);\n}).then(function () {\n  cy.log(sum);\n});\ncy.get('h3 strong').then(function (element) {\n  var amount = element.text().split(' ');\n  var total = amount[1].trim();\n  expect(sum).to.equal(Number(total));\n});\nco.getCheckoutButton().click();\nco.getCountryTextbox().type('France'); //Cypress.config just apply only specific .js not entirely framework\n//Cypress.config('detaultCommandTimeout', 10000)\nco.getCountrySuggestion().click();\nco.getAgreeCheckbox().click({\n  force: true\n});\nco.getPurchaseButton().click();\ncy.get('.alert').then(function (element) {\n  expect(element.text().includes('Success')).to.be[\"true\"];\n});",
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() =>\n    resolveAndRunAfterHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() => state.onFinishScenario(scenario));",
               "err": {},
-              "uuid": "2c22c5aa-b002-4974-a76c-207d68609b12",
-              "parentUUID": "5973296f-3437-4710-9787-d3dfcc7c8786",
+              "uuid": "e30e19d3-082b-4483-a4eb-eb1b5e1b3cb9",
+              "parentUUID": "16d853cc-ebab-4865-9670-6013acda125e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Fill the form details",
+              "fullTitle": "E2E Ecommerce validation Fill the form details",
+              "timedOut": null,
+              "duration": 1490,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() =>\n    resolveAndRunAfterHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "err": {
+                "message": "TypeError: Cannot read property 'rawTable' of undefined",
+                "estack": "TypeError: Cannot read property 'rawTable' of undefined\n    at Context.eval (https://www.rahulshettyacademy.com/__cypress/tests?p=cypress/integration/BDD/Ecome.feature:92:54)\n    at Context.resolveAndRunStepDefinition (https://www.rahulshettyacademy.com/__cypress/tests?p=cypress/integration/BDD/Ecome.feature:13802:9)\n    at Context.eval (https://www.rahulshettyacademy.com/__cypress/tests?p=cypress/integration/BDD/Ecome.feature:13143:35)",
+                "diff": null
+              },
+              "uuid": "38aae7d6-be02-445d-a78b-9c9700138157",
+              "parentUUID": "16d853cc-ebab-4865-9670-6013acda125e",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "2c22c5aa-b002-4974-a76c-207d68609b12"
+            "e30e19d3-082b-4483-a4eb-eb1b5e1b3cb9"
           ],
-          "failures": [],
+          "failures": [
+            "38aae7d6-be02-445d-a78b-9c9700138157"
+          ],
           "pending": [],
           "skipped": [],
-          "duration": 11750,
+          "duration": 11585,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
